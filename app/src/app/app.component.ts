@@ -51,4 +51,13 @@ export class AppComponent {
       this.to_do_action=editData;
   }
 
+  delete(deleteIndex:number)
+  {
+    //this below function return all value ,which index is not match
+    this.to_do_array=this.to_do_array.filter((val,i)=>{
+      return deleteIndex!=i;
+    })
+    console.log(this.to_do_array)
+  }
+
 }

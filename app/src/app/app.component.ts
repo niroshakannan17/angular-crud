@@ -18,6 +18,7 @@ export class AppComponent {
   is_edit:number|null = null;
 
   to_do_array:string[]= [];
+  completed_array:string[]= [];
 
   saveTodoList()
   {
@@ -58,6 +59,21 @@ export class AppComponent {
       return deleteIndex!=i;
     })
     console.log(this.to_do_array)
+  }
+
+  complete(completeIndex:number)
+  {
+      const completedItems = this.to_do_array.find((val,i)=>{
+        return i == completeIndex;
+      })
+      this.to_do_array = this.to_do_array.filter((val,i)=>{
+        return i != completeIndex;
+      })
+      if(completedItems)
+      this.completed_array.push(completedItems)
+      
+      console.log(this.completed_array)
+
   }
 
 }

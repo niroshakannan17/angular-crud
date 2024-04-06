@@ -8,12 +8,18 @@
       <button class="btn btn-success" (click)="saveTodoList()"> Save</button>
     </div>
   </div>
-
+  <br>
   <div class="row">
     <div class="col-md-8">
-      <ul>
-        <li *ngFor="let items of to_do_array">{{items}}</li>
-      </ul>
+      <ul class="list-group">
+        <li *ngFor="let items of to_do_array; let i=index" class="list-group-item">{{items}}
+          <div class="float-end">
+            <a href="#" (click)="edit(i)"><i class="bi bi-pencil-fill"></i></a>
+          </div>
+          
+        </li>
+      </ul>  
     </div>
   </div>
+  
 </div>

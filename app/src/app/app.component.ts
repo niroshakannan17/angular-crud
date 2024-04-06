@@ -15,13 +15,40 @@ export class AppComponent {
 
   to_do_action = '';
 
+  is_edit:number|null = null;
+
   to_do_array:string[]= [];
 
   saveTodoList()
   {
-    this.to_do_array.push(this.to_do_action);
-    console.log(this.to_do_array);
+    if(this.is_edit != null)
+    {
+      this.to_do_array= this.to_do_array.map((val,i)=>{
+        if(this.is_edit == i)
+        {
+          val = this.to_do_action;
+        }
+
+        return val;
+
+      })
+    }else{
+      this.to_do_array.push(this.to_do_action);
+      console.log(this.to_do_array);
+    }
+    
     this.to_do_action = '';
+    this.is_edit =null;
+  }
+
+  edit(editItemIndex:number)
+  {
+      this.is_edit =editItemIndex;
+      const editData = this.to_do_array.find((val,i)=>{
+        return editItemIndex==i;
+      })
+      if(editData)
+      this.to_do_action=editData;
   }
 
 }
